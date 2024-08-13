@@ -4,9 +4,6 @@ import "../pages/index.css";
 
 import { initialCards } from "./cards.js";
 
-// @todo: Темплейт карточки
-
-// @todo: DOM узлы
 export const cardTemplate = document.querySelector("#card-template").content;
 const cardsContainer = document.querySelector(".places__list");
 const editProfileButton = document.querySelector(".profile__edit-button");
@@ -50,14 +47,6 @@ closeButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const popup = button.closest(".popup");
     closePopup(popup);
-  });
-});
-
-document.querySelectorAll(".popup").forEach((popup) => {
-  popup.addEventListener("click", (event) => {
-    if (event.target === popup) {
-      closePopup(popup);
-    }
   });
 });
 

@@ -14,3 +14,17 @@ function closePopupOnEsc(event){
     }
   }
 }
+
+
+function setupPopupCloseOnClick() {
+  document.querySelectorAll(".popup").forEach((popup) => {
+    popup.addEventListener("click", (event) => {
+      if (event.target === popup) {
+        closePopup(popup);
+      }
+    });
+  });
+}
+
+
+setupPopupCloseOnClick();

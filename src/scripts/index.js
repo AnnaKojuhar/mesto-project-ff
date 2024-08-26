@@ -17,7 +17,9 @@ const popupImage = imagePopup.querySelector(".popup__image");
   // Выберите элементы, куда должны быть вставлены значения полей
   const profileName = document.querySelector(".profile__title");
   const profileDescription = document.querySelector(".profile__description");
-
+  const newCardFormElement = document.querySelector(".popup_type_new-card .popup__form");
+  const placeNameInput = newCardFormElement.querySelector(".popup__input_type_card-name");
+  const imageLinkInput = newCardFormElement.querySelector(".popup__input_type_url");
 import { likeCard } from "./card.js";
 import { createCard } from "./card.js";
 import { deleteCard } from "./card.js";
@@ -93,18 +95,12 @@ editProfileForm.addEventListener("submit", handleFormSubmitEditProfile);
 
 //даем возможность добавлять картинки
 //найдем форму для добавления новой карточки
-const newCardFormElement = document.querySelector(
-  ".popup_type_new-card .popup__form"
-);
+
 function handleNewCardFormSubmit(evt) {
   evt.preventDefault();
 
-  const placeName = newCardFormElement.querySelector(
-    ".popup__input_type_card-name"
-  ).value;
-  const imageLink = newCardFormElement.querySelector(
-    ".popup__input_type_url"
-  ).value;
+  const placeName = placeNameInput.value;
+  const imageLink = imageLinkInput.value;
   //создаем новую карточку
   const newCard = {
     name: placeName,

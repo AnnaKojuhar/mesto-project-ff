@@ -30,56 +30,20 @@
 }
 
 
-.edit-profile-name-error{
+.error-message{
   color: red;
   font-family: Inter;
 font-size: 12px;
 font-weight: 400;
 line-height: 14.52px;
 text-align: left;
-}
 
-.edit-profile-description-error{
-  color: red;
-  font-family: Inter;
-font-size: 12px;
-font-weight: 400;
-line-height: 14.52px;
-text-align: left;
-}
-
-.new-place-name-error{
-  color: red;
-  font-family: Inter;
-font-size: 12px;
-font-weight: 400;
-line-height: 14.52px;
-text-align: left;
-}
-
-.new-ava-error{
-  color: red;
-  font-family: Inter;
-font-size: 12px;
-font-weight: 400;
-line-height: 14.52px;
-text-align: left;
-}
-
-.new-place-url-error{
-  color: red;
-  font-family: Inter;
-font-size: 12px;
-font-weight: 400;
-line-height: 14.52px;
-text-align: left;
 }
 
 
-.popup__input:invalid{
-  border-bottom: 1px solid red;
-  outline: none;
-}
+
+
+
 
 .form__input_type_error_profile {
   border-bottom: 1px solid red;}

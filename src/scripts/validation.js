@@ -1,12 +1,13 @@
 // validation.js
 
-const objects = {
+const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__button',
   inactiveButtonClass: 'popup__button_disabled',
   inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
+  errorClass: 'popup__error_visible',
+  
 };
 
  const showInputError = (formElement, inputElement, errorMessage, config) => {
@@ -14,11 +15,13 @@ const objects = {
   inputElement.classList.add(config.inputErrorClass);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(config.errorClass);
+
 };
 
 const hideInputError = (formElement, inputElement, config) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(config.inputErrorClass);
+  inputElement.setCustomValidity("");
   errorElement.textContent = "";
   errorElement.classList.remove(config.errorClass);
 };
@@ -79,4 +82,4 @@ const clearValidation = (formElement, config) => {
   toggleButtonState(inputList, buttonElement, config);
 };
 
-export { enableValidation, clearValidation, objects };
+export { enableValidation, clearValidation, validationConfig };

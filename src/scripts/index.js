@@ -6,9 +6,11 @@ import { likeCard } from "./card.js";
 import { createCard } from "./card.js";
 import { deleteCard } from "./card.js";
 import { toggleButtonState } from "./validation.js";
-import { enableValidation, clearValidation, objects } from "./validation.js";
+import { enableValidation, clearValidation, validationConfig } from "./validation.js";
 import { getUserInfo, getInitialCards, updateUserInfo, addNewCard, updateAvatar } from './api.js';
-
+import { openModal } from "./modal.js";
+import { closeModal } from "./modal.js";
+import { setupPopupCloseOnClick } from "./modal.js";
 export const cardTemplate = document.querySelector("#card-template").content;
 const cardsContainer = document.querySelector(".places__list");
 const editProfileButton = document.querySelector(".profile__edit-button");
@@ -57,7 +59,7 @@ function handleEditAvaFormSubmit(evt) {
       profileImage.style.backgroundImage = `url(${data.avatar})`;
       closeModal(newAvaPopup);
       editAvaForm.reset();
-      clearValidation(editAvaForm, objects);
+      clearValidation(editAvaForm, validationConfig);
       submitButton.textContent = originalButtonText;
     })
     .catch(err => {
@@ -67,15 +69,13 @@ function handleEditAvaFormSubmit(evt) {
 
 editAvaForm.addEventListener("submit", handleEditAvaFormSubmit);
 
-import { openModal } from "./modal.js";
-import { closeModal } from "./modal.js";
-import { setupPopupCloseOnClick } from "./modal.js";
+
 setupPopupCloseOnClick();
 
 editProfileButton.addEventListener("click", () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profileDescription.textContent;
-  clearValidation(editProfileForm, objects);
+  clearValidation(editProfileForm, validationConfig);
   openModal(editPopup);
 });
 
@@ -116,7 +116,7 @@ function handleFormSubmitEditProfile(evt) {
 
 editProfileForm.addEventListener("submit", handleFormSubmitEditProfile);
 
-enableValidation(objects);
+enableValidation(validationConfig);
 
 function handleNewCardFormSubmit(evt) {
   evt.preventDefault();
@@ -132,7 +132,7 @@ function handleNewCardFormSubmit(evt) {
       cardsContainer.prepend(createCard(data, deleteCard, openImagePopup, likeCard, cardTemplate, userId));
       closeModal(newCardPopup);
       newCardFormElement.reset();
-      clearValidation(editProfileForm, objects);
+      clearValidation(editProfileForm, validationConfig);
     })
     .catch(err => console.error('Ошибка при добавлении карточки:', err))
     .finally(() => {

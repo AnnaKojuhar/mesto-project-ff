@@ -19,6 +19,11 @@ export function createCard(item, deleteCard, openImagePopup, likeCard, cardTempl
   } else {
     cardDeleteButton.addEventListener('click', () => deleteCard(item._id, cardItem));
   }
+  if (item.likes.some(like => like._id === userId)) {
+    cardLikeButton.classList.add('card__like-button_is-active');
+  }
+
+
   cardImage.addEventListener('click', () => openImagePopup(item.link, item.name));
   cardLikeButton.addEventListener('click', () => likeCard(cardLikeButton, cardLikeCount, item._id)); // Передаем cardLikeCount и cardId
 
